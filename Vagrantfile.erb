@@ -10,10 +10,16 @@ Vagrant.configure("2") do |config|
       :ssh_port => '2200'
     },
     {
-      :hostname => "rune1", 
+      :hostname => "rune0", 
       :box => "generic/debian10", 
       :ip => "192.168.122.3", 
       :ssh_port => '2201'
+    },
+    {
+      :hostname => "rune1", 
+      :box => "generic/debian10", 
+      :ip => "192.168.122.4", 
+      :ssh_port => '2202'
     },
     {
       :hostname => "rune2", 
@@ -30,7 +36,7 @@ Vagrant.configure("2") do |config|
       node.vm.network :private_network, ip: machine[:ip]
       node.vm.network "forwarder_port", guest: 22, host: machine[:ssh_port],id: "ssh"
       node.vm.provider :libvirt do |libvirt|
-        libvirt.customize ["modifyvm", :id, "--memory", 2048]
+        libvirt.customize ["modifyvm", :id, "--memory", 1024]
         libvirt.customize ["modifyvm", :id, "--cpus", 2]
       end
     end
