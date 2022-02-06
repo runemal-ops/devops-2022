@@ -1,20 +1,23 @@
 #!/bin/bash
+BLUE='\033[1;34m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
 
-echo "#### Preparing The Environment... ####"
-sudo apt install -y qemu libvirt-daemon-system libvirt-clients libxslt-dev libxml2-dev libvirt-dev zlib1g-dev ruby-dev ruby-libvirt ebtables dnsmasq-base
+echo -e "${GREEN} #### Preparing The Environment... ####${NC}"
+sudo apt install -y virt-manager qemu libvirt-daemon-system libvirt-clients libxslt-dev libxml2-dev libvirt-dev zlib1g-dev ruby-dev ruby-libvirt ebtables dnsmasq-base
 
-echo "#### Installing latest Ansible version... ####"
+echo -e "${GREEN} #### Installing latest Ansible version... ####${NC}"
 pip3 install ansible
 
-echo "#### Installing Vagrant #### "
+echo -e "${GREEN}#### Installing Vagrant ####${NC}"
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
 sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
 sudo apt-get update -y && sudo apt install -y vagrant
 
-echo "#### Initializing Vagrantfile... ####"
+echo -e "${GREEN}#### Initializing Vagrantfile... ####${NC}"
 rm -rf Vagrantfile && vagrant init --template Vagrantfile.erb
-echo "#### Setting up Vagrant required plugins"
+echo -e "#${GREEN}#### Setting up Vagrant required plugins... ####${NC}"
 vagrant plugin list | grep -v libvirt || vagrant plugin install vagrant-libvirt 
 vagrant plugin list | grep -v mutate || vagrant plugin install vagrant-mutate
 
-echo "#### You are all set, start defining your machines in Vagrantfile ####"
+echo -e "${BLUE} # You are all set, start your machines with #~> vagrant up command # ${NC}"
