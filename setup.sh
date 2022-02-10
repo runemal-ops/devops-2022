@@ -20,4 +20,14 @@ echo -e "#${GREEN}#### Setting up Vagrant required plugins... ####${NC}"
 vagrant plugin list | grep -v libvirt || vagrant plugin install vagrant-libvirt 
 vagrant plugin list | grep -v mutate || vagrant plugin install vagrant-mutate
 
-echo -e "${BLUE} # You are all set, start your machines with #~> vagrant up command # ${NC}"
+echo -e "${GREEN} # You are all set, starting your machines with #~> vagrant up command # ${NC}"
+vagrant up
+
+echo -e "${BLUE}#### Initializing Hosts... ####${NC}"
+./LabSetup/setup_hosts.sh
+
+echo -e "${BLUE}#### Setting Up Ansible on Hosts ####${NC}"
+./Ansible/setup_ansible.sh
+
+echo -e "${BLUE}#### Deploying app on Hosts ####${NC}"
+./Docker/deploy_app.sh

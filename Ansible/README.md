@@ -1,3 +1,8 @@
+# Run the setup_ansible.sh (recommended)
+```bash
+./setup_ansible.sh
+```
+
 # Install Ansible on control station
 ```bash
 sudo apt install ansible -y
