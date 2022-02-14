@@ -5,9 +5,7 @@
     command: docker run hello-world
 
   - name: Deploy the app with Docker Compose
-    command: docker-compose up -d
-    args:
-      chdir: vagrant/Docker/
+    command: chdir=/vagrant/Docker docker-compose up -d
 
   - name: Test that the app is running successfully
     command: curl http://localhost:5000/
