@@ -5,3 +5,10 @@ odin0
 rune0
 rune1
 rune2
+
+[manager]
+rune0
+
+[worker]
+rune1
+rune2

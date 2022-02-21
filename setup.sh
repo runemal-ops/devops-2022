@@ -31,3 +31,6 @@ echo -e "${BLUE}#### Setting Up Ansible on Hosts ####${NC}"
 
 echo -e "${BLUE}#### Deploying app on Hosts ####${NC}"
 ./Docker/deploy_app.sh
+
+echo -e "${BLUE}#### Setting Up Swarm ####${NC}"
+./DockerSwarm/setup_swarm.sh
